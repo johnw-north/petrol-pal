@@ -1,16 +1,118 @@
-
-body {
+* {
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  background: #7289da;
+  font-weight: 400;
+}
 
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: .6rem;
+  background: #ffaf35;
+  margin-inline: auto;
+  width: 95%;
+  max-width: 40rem;
+}
+
+h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #DD7500;
+}
+
+p {
+  color: #364149;
 }
 
 .header__title h1 {
   font-family: 'Edu TAS Beginner', cursive;
   font-size: 3rem;
-  color: #23272a;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 
+.car {
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.car__size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.size__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.car__manual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.manual__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manual__input input {
+  margin: 0 5px;
+  width: 70px;
+}
+
+.fuel {
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.fuel__type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.type__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fuel__price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price__input input {
+  margin: 0 5px;
+  width: 70px;
+}

@@ -1,4 +1,5 @@
-
+import Car from "./components/Car";
+import Fuel from "./components/Fuel";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
         </div>
       </header>
       <main>
-        
+        <Car />
+        <Fuel />
       </main>
     </div>
   );
