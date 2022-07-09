@@ -1,5 +1,7 @@
 import Car from "./components/Car";
 import Fuel from "./components/Fuel";
+import Location from "./components/Location";
+import Switch from "./components/Switch";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <main>
         <Car />
         <Fuel />
+        <Switch />
+        <Location />
       </main>
     </div>
   );
