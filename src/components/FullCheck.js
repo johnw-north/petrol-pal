@@ -1,11 +1,11 @@
 
 
-function Location() {
+function FullCheck() {
     return (
-      <div className="location">
+      <div className="full__check">
   
         <div className="car__manual">
-          <h1 className="manual__title">Where?</h1>
+          <h1 className="manual__title">Full Check</h1>
           <div className="manual__input">
             <h2>From:</h2>
             <input type="number" placeholder="Manchester"/>
@@ -18,5 +18,5 @@ function Location() {
     );
   }
   
-  export default Location;
+  export default FullCheck;
   

@@ -117,7 +117,21 @@ p {
   width: 70px;
 }
 
-.location {
+
+.checks {
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checks__btns * {
+  margin: 0 20px;
+  margin-bottom: 20px;
+}
+
+.quick__check {
   background-color: white;
   border-radius: 20px;
   padding: 15px 10px;
@@ -127,15 +141,12 @@ p {
   margin-bottom: 15px;
 }
 
-.switch {
+.full__check {
+  background-color: white;
+  border-radius: 20px;
   padding: 15px 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 15px;
 }
-
-.switch * {
-  margin: 0 20px;
-}
-

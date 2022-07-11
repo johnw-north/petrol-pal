@@ -5,7 +5,7 @@ function Fuel() {
       <div className="fuel">
        
         <div className="fuel__type">
-          <h1 className="type__title">Fuel Type?</h1>
+          <h1 className="type__title">Fuel Type</h1>
           <div className="type__btns">
             <button>Petrol</button>
             <button>Diesel</button>
@@ -13,7 +13,7 @@ function Fuel() {
         </div>
 
         <div className="fuel__price">
-          <h1 className="price__title">Current fuel price?</h1>
+          <h1 className="price__title">Fuel Price</h1>
           <div className="price__input">
             <h2>Pence per litre:</h2>
             <input type="number" placeholder="190"/>
