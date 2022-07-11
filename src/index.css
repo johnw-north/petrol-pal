@@ -153,15 +153,30 @@ p {
 }
 
 .full__check {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__full * {
+  margin-right: 5px;
+  font-size: .8rem;
+}
+
+.card {
   background-color: white;
   border-radius: 20px;
   padding: 15px 10px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
-
-
-
-
