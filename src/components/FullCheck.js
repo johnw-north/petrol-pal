@@ -3,17 +3,15 @@
 function FullCheck() {
     return (
       <div className="full__check">
-  
-        <div className="car__manual">
-          <h1 className="manual__title">Full Check</h1>
-          <div className="manual__input">
-            <h2>From:</h2>
-            <input type="number" placeholder="Manchester"/>
-            <h2>To:</h2>
-            <input type="number" placeholder="London" />
-          </div>
-        </div>
-  
+        <h1 className="check__title">Full Check</h1>
+        <form className="form__full" >
+          <label for="from">From:</label>
+          <input type="text" id="from" name="from" placeholder="Manchester"/>
+          <label for="to">To:</label>
+          <input type="text" id="to" name="to" placeholder="London"/>
+          <input type="checkbox" id="oneWay" name="oneWay" value="true" />
+          <label for="oneWay">One Way</label>            
+        </form>  
       </div>
     );
   }
