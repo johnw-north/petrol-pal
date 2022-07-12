@@ -3,7 +3,7 @@
 function Card(props) {
     return (
       <div className="card">
-            <h1 className="check__title">{props.title}</h1>
+            <h1>{props.title}</h1>
             <form className="form__full" >
                 <label for="from">From:</label>
                 <input 
