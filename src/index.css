@@ -165,9 +165,13 @@ p {
   align-items: center;
 }
 
-.form__full * {
+.form__full label {
   margin-right: 5px;
   font-size: .8rem;
+}
+
+.form__full input {
+  margin-right: 15px;
 }
 
 .card {
