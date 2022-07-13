@@ -1,27 +1,25 @@
+import Card from "./Card";
 
 
-function QuickCheck() {
+function QuickCheck(props) {
     return (
       <div className="quick__check">
-        <div className="container">
-          <h1>Quick Check</h1>
-          <form className="form__quick">
-            <label for="from">From:</label>
-            <input type="text" id="from" name="from" placeholder="Manchester"/>
-            <label for="to">To:</label>
-            <input type="text" id="to" name="to" placeholder="London"/>
-            <label for="oneWay">One<br/>Way</label>            
-            <input type="checkbox" id="oneWay" name="oneWay" value="true" />
-          </form>  
+        
+        <div className="cards">
+          <Card title="Quick Check" exTrips="1"/>
         </div>
-        <div className="container">
-          <h1>Results</h1>
-        </div>          
+        
+        <div className="results">
+          <h1 className="results__title">Results</h1>
+          <div className="check__container">
+            <h1>Cost</h1>
+            <h2>£ {props.total}</h2>
+          </div>       
+        </div>         
       </div>
     );
   }
   
-  export default QuickCheck;
-        
+  export default QuickCheck;   
   
   
