@@ -7,10 +7,11 @@ function App() {
 
   const [formData, setFormData] = useState(
     {
+      fuelType: "petrol",
+      carSize: "custom",
       mpg: 0,
       fuelCap: 0,
-      fuelType: 0,
-      price: 0
+      price: 0,
     }
     )
 
@@ -23,15 +24,9 @@ function App() {
     })
   }
 
-  const [checkType, setCheckType] = useState(<QuickCheck total={formData.mpg} />)
-  
-  function quickCheck() {
-      setCheckType(<QuickCheck total={formData.mpg} />)
-  }
+  const [toggle, setToggle] = useState(false)
 
-  function fullCheck() {
-      setCheckType(<FullCheck />)
-  }
+
 
   return (
     <div className="App">
@@ -41,12 +36,13 @@ function App() {
         </div>
       </header>
       <main>
-        <CarInfo mpgHandle={handleChange} />
+        <CarInfo handleChange={handleChange} />
         <div className="checks__btns">
-          <button className="btn__quick" onClick={quickCheck}>Quick Check</button>
-          <button className="btn__full" onClick={fullCheck}>Full Check</button>
+          <button className="btn__quick" onClick={() => setToggle(false)}>Quick Check</button>
+          <button className="btn__full" onClick={() => setToggle(true)}>Full Check</button>
         </div>
-        {checkType}
+        {!toggle && <QuickCheck total={formData.mpg} />}
+        {toggle && <FullCheck total={formData.mpg} />}
       </main>
     </div>
   );
