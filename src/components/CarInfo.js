@@ -17,20 +17,23 @@ function CarInfo(props) {
         <div className="car__manual">
           <h1>Manual Input</h1>
           <div className="manual__input">
-            <h2>MPG:</h2>
+            <label htmlFor="mpg">MPG:</label>
             <input 
-              type="number" 
+              type="number"
+              id="mpg" 
               name="mpg" 
-              placeholder="35mpg" 
+              placeholder="36 mpg" 
               onChange={props.handleChange}
             />
-            <h2>Fuel capacity:</h2>
+            <label htmlFor="fuelCap">Fuel tank<br/>capacity:</label>
             <input 
               type="number" 
-              name="fuelCap" 
+              name="fuelCap"
+              id="fuelCap" 
               placeholder="50 L" 
               onChange={props.handleChange} 
             />
+            <button>Don't know?</button>
           </div>
         </div>
       </div>
@@ -48,10 +51,11 @@ function CarInfo(props) {
           <div className="fuel__price">
             <h1>Fuel Price</h1>
             <div className="price__input">
-              <h2>Pence per litre:</h2>
+              <label htmlFor="price">Pence<br/>Per Litre:</label>
               <input 
                 type="number" 
-                name="price" 
+                name="price"
+                id="price" 
                 placeholder="190" 
                 onChange={props.handleChange} 
               />

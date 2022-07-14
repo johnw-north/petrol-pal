@@ -5,28 +5,26 @@ import FullCheck from "./components/FullCheck"
 
 function App() {
 
-  const [formData, setFormData] = useState(
+  const [carData, setCarData] = useState(
     {
       fuelType: "petrol",
-      carSize: "custom",
-      mpg: 0,
-      fuelCap: 0,
-      price: 0,
+      carSize: "medium",
+      mpg: 36,
+      fuelCap: 50,
+      price: 190,
     }
-    )
+  )
 
   function handleChange(event) {
-    setFormData(prevFormData => {
+    setCarData(prevCarData => {
       return {
-        ...prevFormData,
+        ...prevCarData,
         [event.target.name]: event.target.value
       }
     })
   }
 
   const [toggle, setToggle] = useState(false)
-
-
 
   return (
     <div className="App">
@@ -41,8 +39,8 @@ function App() {
           <button className="btn__quick" onClick={() => setToggle(false)}>Quick Check</button>
           <button className="btn__full" onClick={() => setToggle(true)}>Full Check</button>
         </div>
-        {!toggle && <QuickCheck total={formData.mpg} />}
-        {toggle && <FullCheck total={formData.mpg} />}
+        {!toggle && <QuickCheck data={carData} />}
+        {toggle && <FullCheck data={carData} />}
       </main>
     </div>
   );

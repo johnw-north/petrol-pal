@@ -25,6 +25,10 @@ p {
   color: #364149;
 }
 
+label {
+  font-size: .8rem;
+}
+
 .header__title h1 {
   font-family: 'Edu TAS Beginner', cursive;
   font-size: 3rem;
