@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+
 import Card from "./Card";
 
 
 function QuickCheck(props) {
-  
+
   const [quickData, setQuickData] = useState(
     {
-      miles: 15,
+      miles: 5,
       trips: 1,
       oneWay: true,
     }
@@ -30,7 +31,7 @@ function QuickCheck(props) {
     })
   }
 
-  const cost = ((props.data.price / 100) / (props.data.mpg / 4.54609) * (quickData.miles * quickData.trips) * (quickData.oneWay ? 2 : 1)).toFixed(2)
+  const cost = ((props.data.price / 100) / (props.data.mpg / 4.54609) * (quickData.miles * quickData.trips) * (quickData.oneWay ? 1 : 2)).toFixed(2)
 
   const miles = (quickData.miles * quickData.trips) * (quickData.oneWay ? 1 : 2)
 
@@ -40,7 +41,8 @@ function QuickCheck(props) {
     <div className="quick__check">        
       <div className="cards">
         <Card 
-          title="Quick Check" 
+          title="Quick Check"
+          titleTrips="Trips:" 
           exTrips="1"
           handleChange={handleChange}
           handleCheckbox={handleCheckbox}

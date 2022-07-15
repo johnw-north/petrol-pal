@@ -1,28 +1,46 @@
-
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 
 function Card(props) {
+  
+  const {isLoaded} = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries: ['places']
+  })
+
+  if (!isLoaded) {
+    return (<h1>not working</h1>)
+  }
+
   return (
     <div className="card"> 
       <div className="check__container">
         <h1>{props.title}</h1>
         <form className="form__full" >
-          <label htmlFor="from">From:</label>
-          <input 
-          type="text" 
-          id="from" 
-          name="from" 
-          placeholder="Manchester"
-          style={{width: "150px"}}
-          />
-          <label htmlFor="to">To:</label>
-          <input 
-          type="text" 
-          id="to" 
-          name="to" 
-          placeholder="London"
-          style={{width: "150px"}}
-          />
-          <label htmlFor="nTrips">Trips a<br/>month:</label>
+          <Autocomplete>
+            <div>
+              <label htmlFor="from">From:</label>
+              <input 
+              type="text" 
+              id="from" 
+              name="from" 
+              placeholder="Manchester"
+              style={{width: "150px"}}
+              />
+            </div>
+          </Autocomplete>
+          <Autocomplete>
+            <div>
+              <label htmlFor="to">To:</label>
+              <input 
+              type="text" 
+              id="to" 
+              name="to" 
+              placeholder="London"
+              style={{width: "150px"}}
+              />
+            </div>
+          </Autocomplete>
+          <label htmlFor="nTrips">{props.titleTrips}</label>
           <input 
           type="number" 
           id="trips" 

@@ -9,10 +9,10 @@ function FullCheck(props) {
   return (
     <div className="full__check">
       <div className="cards">
-        <Card title="Work" exTrips="20"/>
-        <Card title="Shopping" exTrips="3"/>
-        <Card title="School" exTrips="10"/>
-        <Card title="Other" exTrips="1"/>
+        <Card title="Work" exTrips="20" titleTrips="Trips<br>a month:" />
+        <Card title="Shopping" exTrips="3" titleTrips="Trips:" />
+        <Card title="School" exTrips="10" titleTrips="Trips:" />
+        <Card title="Other" exTrips="1" titleTrips="Trips:" />
       </div>
       
       <div className="results">

@@ -7,11 +7,14 @@ function CarInfo(props) {
       <div className="container">
         <div className="car__size">
           <h1>Car Size</h1>
-          <div className="size__btns">
-            <button>small</button>
-            <button>medium</button>
-            <button>large</button>
-          </div>
+          <form className="size__btns">
+            <input type="radio" id="small" name="size"/>
+            <label htmlFor="small">small</label>
+            <input type="radio" id="medium" name="size"/>
+            <label htmlFor="medium">medium</label>
+            <input type="radio" id="large" name="size"/>
+            <label htmlFor="large">large</label>
+          </form>
         </div>
 
         <div className="car__manual">
@@ -42,10 +45,12 @@ function CarInfo(props) {
         <div className="container">
           <div className="fuel__type">
             <h1>Fuel Type</h1>
-            <div className="type__btns">
-              <button>Petrol</button>
-              <button>Diesel</button>
-            </div>
+            <form className="type__btns">
+              <input type="radio" id="petrol" name="type"/>
+              <label htmlFor="petrol">petrol</label>
+              <input type="radio" id="diesel" name="type"/>
+              <label htmlFor="diesel">diesel</label>
+            </form>
           </div>
 
           <div className="fuel__price">
