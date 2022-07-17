@@ -1,10 +1,14 @@
+import React, { useRef, useState } from 'react';
+
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+
+const libraries = ['places'];
 
 function Card(props) {
   
   const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries: ['places']
+    libraries,
   })
 
   if (!isLoaded) {
@@ -25,6 +29,8 @@ function Card(props) {
               name="from" 
               placeholder="Manchester"
               style={{width: "150px"}}
+              // onChange={props.calcMiles}
+              ref={props.originRef}
               />
             </div>
           </Autocomplete>
@@ -37,6 +43,8 @@ function Card(props) {
               name="to" 
               placeholder="London"
               style={{width: "150px"}}
+              // onChange={props.calcMiles}
+              ref={props.destiantionRef}
               />
             </div>
           </Autocomplete>

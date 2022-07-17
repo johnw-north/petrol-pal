@@ -8,11 +8,27 @@ function CarInfo(props) {
         <div className="car__size">
           <h1>Car Size</h1>
           <form className="size__btns">
-            <input type="radio" id="small" name="size"/>
+            <input 
+              type="radio" 
+              id="small" 
+              name="carSize" 
+              onChange={props.handleSize} 
+            />
             <label htmlFor="small">small</label>
-            <input type="radio" id="medium" name="size"/>
+            <input 
+              type="radio" 
+              id="medium" 
+              name="carSize"
+              defaultChecked="checked" 
+              onChange={props.handleSize} 
+            />
             <label htmlFor="medium">medium</label>
-            <input type="radio" id="large" name="size"/>
+            <input 
+              type="radio" 
+              id="large" 
+              name="carSize" 
+              onChange={props.handleSize} 
+            />
             <label htmlFor="large">large</label>
           </form>
         </div>
@@ -43,16 +59,6 @@ function CarInfo(props) {
 
       <div className="fuel">
         <div className="container">
-          <div className="fuel__type">
-            <h1>Fuel Type</h1>
-            <form className="type__btns">
-              <input type="radio" id="petrol" name="type"/>
-              <label htmlFor="petrol">petrol</label>
-              <input type="radio" id="diesel" name="type"/>
-              <label htmlFor="diesel">diesel</label>
-            </form>
-          </div>
-
           <div className="fuel__price">
             <h1>Fuel Price</h1>
             <div className="price__input">

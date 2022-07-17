@@ -6,10 +6,9 @@ import FullCheck from "./components/FullCheck"
 
 function App() {
 
+  
   const [carData, setCarData] = useState(
     {
-      fuelType: "petrol",
-      carSize: "medium",
       mpg: 36,
       fuelCap: 50,
       price: 190,
@@ -25,6 +24,30 @@ function App() {
     })
   }
 
+  function handleSize(event) {
+    setCarData(prevCarData => {
+      if (event.target.id === "small") {
+        return {
+          ...prevCarData,
+          mpg: 42,
+          fuelCap: 40,
+        }
+      } else if (event.target.id === "medium") {
+          return {
+            ...prevCarData,
+            mpg: 36,
+            fuelCap: 50,
+          }
+      } else {
+          return {
+            ...prevCarData,
+            mpg: 30,
+            fuelCap: 60,
+          } 
+      }
+    })
+  }
+
   const [toggle, setToggle] = useState(false)
 
   return (
@@ -35,7 +58,7 @@ function App() {
         </div>
       </header>
       <main>
-        <CarInfo handleChange={handleChange} />
+        <CarInfo handleChange={handleChange} handleSize={handleSize} />
         <div className="checks__btns">
           <button className="btn__quick" onClick={() => setToggle(false)}>Quick Check</button>
           <button className="btn__full" onClick={() => setToggle(true)}>Full Check</button>

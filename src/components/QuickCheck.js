@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 
 import Card from "./Card";
 
+const libraries = ['places'];
 
 function QuickCheck(props) {
 
   const [quickData, setQuickData] = useState(
     {
-      miles: 5,
       trips: 1,
       oneWay: true,
     }
@@ -31,9 +32,43 @@ function QuickCheck(props) {
     })
   }
 
-  const cost = ((props.data.price / 100) / (props.data.mpg / 4.54609) * (quickData.miles * quickData.trips) * (quickData.oneWay ? 1 : 2)).toFixed(2)
+  const {isLoaded} = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  })
 
-  const miles = (quickData.miles * quickData.trips) * (quickData.oneWay ? 1 : 2)
+  const [distance, setDistance] = useState('0')
+
+  const originRef = useRef()
+  const destiantionRef = useRef()
+
+
+  if (!isLoaded) {
+    return (<h1>not working</h1>)
+  }
+
+  async function calculateMiles() {
+    // eslint-disable-next-line no-undef
+    const directionsService = new google.maps.DirectionsService()
+    const results = await directionsService.route({
+      origin: originRef.current.value,
+      destination: destiantionRef.current.value,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: 1,
+    })
+    setDistance(parseFloat(results.routes[0].legs[0].distance.text))
+  }
+
+  function clearRoute() {
+    setDistance('')
+    originRef.current.value = ''
+    destiantionRef.current.value = ''
+  }
+
+  const cost = ((props.data.price / 100) / (props.data.mpg / 4.54609) * (distance * quickData.trips) * (quickData.oneWay ? 1 : 2)).toFixed(2)
+
+  const miles = (distance * quickData.trips) * (quickData.oneWay ? 1 : 2)
 
   const fullTank = ((props.data.price / 100) * props.data.fuelCap).toFixed(2)
 
@@ -47,7 +82,15 @@ function QuickCheck(props) {
           handleChange={handleChange}
           handleCheckbox={handleCheckbox}
           data={quickData}
+          originRef={originRef}
+          destiantionRef={destiantionRef}
+          calcMiles={calculateMiles}
         />
+      </div>
+
+      <div className="container">
+        <button onClick={calculateMiles} >CHECK</button>
+        <button onClick={clearRoute} >RESET</button>
       </div>
       
       <div className="results">
@@ -55,7 +98,7 @@ function QuickCheck(props) {
         <div className="check__container">
           <h1>Cost</h1>
           <h2>£ {cost}</h2>
-          <h2>{miles} miles</h2>
+          <h2>{miles} Miles</h2>
         </div>       
         <div className="check__container">
           <h1>Fill Up Cost</h1>
