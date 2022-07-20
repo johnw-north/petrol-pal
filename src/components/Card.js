@@ -38,7 +38,7 @@ function Card(props) {
   
   const [tripData, setTripData] = useState(
     {
-      trips: 1,
+      trips: 0,
       oneWay: true,
     }
     )
@@ -53,14 +53,18 @@ function Card(props) {
     })
   }
   
-  const cost = ((props.carData.price / 100) / (props.carData.mpg / 4.54609) * (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
-  
+  const mpl = props.carData.mpg / 4.54609
+  const pence = props.carData.price / 100
+
+
+  const cost = ((pence / mpl) * (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
+
   const miles = (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)
 
-  const fullMiles = (props.carData.mpg / 4.54609).toFixed(2) * props.carData.fuelCap
+  const fullMiles = mpl.toFixed(2) * props.carData.fuelCap
   
-  const fullTank = ((props.carData.price / 100) * props.carData.fuelCap).toFixed(2)
-  
+  const fullTank = (pence * props.carData.fuelCap).toFixed(2)
+
   if (!isLoaded) {
     return (<h1>not working</h1>)
   }
@@ -105,10 +109,10 @@ function Card(props) {
             id="trips" 
             name="trips" 
             placeholder={props.exTrips}
+            value={tripData.trips || ""}
             onChange={handleChange}
             style={{width: "50px"}}
             />  
-            <label htmlFor="oneWay">One<br/>Way</label>            
             <input 
             type="checkbox" 
             id="oneWay" 
@@ -117,6 +121,7 @@ function Card(props) {
             onChange={handleChange}
             style={{width: "25px"}} 
             />
+            <label htmlFor="oneWay">One<br/>Way</label>            
           </div>
         </form>          
         <div className="btns__set">
@@ -129,7 +134,7 @@ function Card(props) {
       <div className="results">
         <div className="check__container">
           <h1>Travel Cost</h1>
-          <h2>£ {cost}</h2>
+          <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
           <h2>{miles} Miles</h2>
         </div>       
         <div className="check__container">
@@ -142,4 +147,4 @@ function Card(props) {
   );
 }
 
-export default Card;
+export default Card

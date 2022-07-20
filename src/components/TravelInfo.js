@@ -1,15 +1,15 @@
 // import React, { useState, useRef } from 'react';
 import Card from "./Card";
 
-function QuickCheck(props) {
+function TravelInfo(props) {
 
   
 
   return (
-    <div className="quick__check">        
+    <div className="travel__info">        
       <div className="cards">
         <Card 
-          title="Quick Check"
+          title="Travel Information"
           titleTrips="Trips:" 
           exTrips="1"
           carData={props.carData}
@@ -20,6 +20,6 @@ function QuickCheck(props) {
   );
 }
   
-export default QuickCheck;   
+export default TravelInfo;   
   
   

@@ -1,38 +1,39 @@
 import React, { useState } from 'react';
 
-import CarInfo from "./components/CarInfo";
-import QuickCheck from "./components/QuickCheck"
+import AutoInfo from "./components/AutoInfo";
+import ManualInfo from './components/ManualInfo';
+import FuelInfo from './components/FuelInfo';
+import TravelInfo from "./components/TravelInfo"
 
 function App() {
 
+  const [toggle, setToggle] = useState(true)
   
+  function handleToggle() {
+    setToggle(!toggle)
+  }
+
+  console.log(toggle)
+
   const [carData, setCarData] = useState(
     {
-      mpg: 36,
-      fuelCap: 50,
-      price: 190,
+      mpg: 0,
+      fuelCap: 0,
+      price: 0,
+      size: "",
     }
   )
 
   function handleChange(event) {
-    const {name, value, type, checked} = event.target
+    const {name, value, type, checked, id} = event.target
     setCarData(prevCarData => {
-      return {
-        ...prevCarData,
-        [name]: type === "checkbox" ? checked : value
-      }
-    })
-  }
-
-  function handleSize(event) {
-    setCarData(prevCarData => {
-      if (event.target.id === "small") {
+      if (id === "small") {
         return {
           ...prevCarData,
           mpg: 42,
           fuelCap: 40,
         }
-      } else if (event.target.id === "medium") {
+      } else if (id === "medium") {
           return {
             ...prevCarData,
             mpg: 36,
@@ -46,9 +47,14 @@ function App() {
           } 
       }
     })
+    setCarData(prevCarData => {
+      return {
+        ...prevCarData,
+        [name]: type === "checkbox" ? checked : value,        
+      }
+    })
   }
 
-  const [toggle, setToggle] = useState(false)
 
   return (
     <div className="App">
@@ -58,8 +64,15 @@ function App() {
         </div>
       </header>
       <main>
-        <CarInfo handleChange={handleChange} handleSize={handleSize} />
-        {!toggle && <QuickCheck carData={carData} handleChange={handleChange} />}
+        <div className="container">
+          {toggle ? 
+          <ManualInfo handleToggle={handleToggle} carData={carData} handleChange={handleChange} /> 
+          :
+          <AutoInfo handleToggle={handleToggle} carData={carData} handleChange={handleChange} />
+          }
+          <FuelInfo carData={carData} handleChange={handleChange} />
+        </div>
+        <TravelInfo carData={carData} handleChange={handleChange} />
       </main>
     </div>
   );
