@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/petrol-pal/static/css/main.6cc31687.css",
+    "main.js": "/petrol-pal/static/js/main.ecbacd5e.js",
+    "index.html": "/petrol-pal/index.html",
+    "main.6cc31687.css.map": "/petrol-pal/static/css/main.6cc31687.css.map",
+    "main.ecbacd5e.js.map": "/petrol-pal/static/js/main.ecbacd5e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6cc31687.css",
+    "static/js/main.ecbacd5e.js"
+  ]
+}
