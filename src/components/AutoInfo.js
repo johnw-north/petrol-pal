@@ -3,9 +3,9 @@
 function AutoInfo(props) {
 
   return (
-    <div className="auto__info">      
+    <div className="auto--info">      
       <h1>Car Size</h1>
-      <form className="size__btns">
+      <form className="size--btns">
         <input 
           type="radio" 
           id="small" 

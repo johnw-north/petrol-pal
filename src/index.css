@@ -21,6 +21,12 @@ h1 {
   color: #2d095c;
 }
 
+h3 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 p {
   color: #364149;
 }
@@ -29,7 +35,7 @@ label {
   font-size: .8rem;
 }
 
-.header__title h1 {
+.header--title h1 {
   font-family: 'Edu TAS Beginner', cursive;
   font-size: 3rem;
   font-weight: 600;
@@ -40,167 +46,52 @@ label {
   margin: 20px;
 }
 
-.container {
+.bubble {
   background-color: white;
   border-radius: 20px;
-  padding: 15px 10px;
+  padding: 15px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.car__size {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.size__btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.car__manual {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.manual__input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.manual__input input {
-  margin: 0 5px;
-  width: 70px;
-}
-
-.fuel__type {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.type__btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fuel__price {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.price__input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.price__input input {
-  margin: 0 5px;
-  width: 70px;
-}
-
-.checks {
-  padding: 15px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.checks__btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.checks__btns * {
-  margin: 0 20px;
-  margin-bottom: 20px;
-}
-
-.check__container {
+.bubble--c {
   background-color: white;
   border-radius: 20px;
-  padding: 15px 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 0 15px;
   margin-bottom: 15px;
 }
 
-.travel__info {
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container--c {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
-.form__quick {
+.trip--settings {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.form__quick * {
-  margin-right: 5px;
-  font-size: .8rem;
-}
-
-.full__check {
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: nowrap;
 }
 
-.form__full {
+.trip--settings div {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.form__full label {
-  margin-right: 5px;
-  font-size: .8rem;
-}
-
-.form__full input {
-  margin-right: 15px;
-}
-
-.results__title {
-  font-family: 'Edu TAS Beginner', cursive;
-  font-size: 3rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 20px;
-}
-
-.results {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.period {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 20px;
-  margin-bottom: 15px;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;  
 }

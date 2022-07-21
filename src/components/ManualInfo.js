@@ -5,8 +5,8 @@ function ManualInfo(props) {
   return (
     <div className="car">
       <h1>Manual Input</h1>
-      <div className="manual__info">
-        <div className="manual__input">
+      <div className="manual--info">
+        <div className="manual--input">
           <label htmlFor="mpg">MPG:</label>
           <input 
             type="number"

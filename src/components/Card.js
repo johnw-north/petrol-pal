@@ -56,14 +56,10 @@ function Card(props) {
   const mpl = props.carData.mpg / 4.54609
   const pence = props.carData.price / 100
 
-
+  const miles = ((distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
   const cost = ((pence / mpl) * (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
 
-  const miles = (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)
-
-  const fullMiles = mpl.toFixed(2) * props.carData.fuelCap
   
-  const fullTank = (pence * props.carData.fuelCap).toFixed(2)
 
   if (!isLoaded) {
     return (<h1>not working</h1>)
@@ -71,57 +67,63 @@ function Card(props) {
     
   return (
     <div className="card"> 
-      <div className="check__container">
+      <div className="bubble--c">
         <h1>{props.title}</h1>
-        <form className="form__full" >
-          <div className="location">
-            <Autocomplete>
+        <form>
+          <div className="container">
+            <div className="container--c">
+              <Autocomplete>
+                <div>
+                  <label htmlFor="from">From:</label>
+                  <input
+                  type="text"
+                  id="from"
+                  name="from"
+                  placeholder="Manchester"
+                  style={{width: "150px"}}
+                  ref={originRef}
+                  />
+                </div>
+              </Autocomplete>
+              <Autocomplete>
+                <div>
+                  <label htmlFor="to">To:</label>
+                  <input
+                  type="text"
+                  id="to"
+                  name="to"
+                  placeholder="London"
+                  style={{width: "150px"}}
+                  ref={destiantionRef}
+                  />
+                </div>
+              </Autocomplete>
+            </div>
+            <div className="container--c">
               <div>
-                <label htmlFor="from">From:</label>
-                <input 
-                type="text" 
-                id="from" 
-                name="from" 
-                placeholder="Manchester"
-                style={{width: "150px"}}
-                ref={originRef}
+                <label htmlFor="nTrips">{props.titleTrips}</label>
+                <input
+                type="number"
+                id="trips"
+                name="trips"
+                placeholder={props.exTrips}
+                value={tripData.trips || ""}
+                onChange={handleChange}
+                style={{width: "50px"}}
                 />
               </div>
-            </Autocomplete>
-            <Autocomplete>
               <div>
-                <label htmlFor="to">To:</label>
-                <input 
-                type="text" 
-                id="to" 
-                name="to" 
-                placeholder="London"
-                style={{width: "150px"}}
-                ref={destiantionRef}
+                <input
+                type="checkbox"
+                id="oneWay"
+                name="oneWay"
+                checked={tripData.oneWay}
+                onChange={handleChange}
+                style={{width: "25px"}}
                 />
+                <label htmlFor="oneWay">One Way</label>
               </div>
-            </Autocomplete>
-          </div>
-          <div className="trip__settings">
-            <label htmlFor="nTrips">{props.titleTrips}</label>
-            <input 
-            type="number" 
-            id="trips" 
-            name="trips" 
-            placeholder={props.exTrips}
-            value={tripData.trips || ""}
-            onChange={handleChange}
-            style={{width: "50px"}}
-            />  
-            <input 
-            type="checkbox" 
-            id="oneWay" 
-            name="oneWay"
-            checked={tripData.oneWay} 
-            onChange={handleChange}
-            style={{width: "25px"}} 
-            />
-            <label htmlFor="oneWay">One<br/>Way</label>            
+            </div>
           </div>
         </form>          
         <div className="btns__set">
@@ -131,16 +133,11 @@ function Card(props) {
       </div>
       
 
-      <div className="results">
-        <div className="check__container">
+      <div className="container">
+        <div className="bubble--c">
           <h1>Travel Cost</h1>
           <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
           <h2>{miles} Miles</h2>
-        </div>       
-        <div className="check__container">
-          <h1>Fill Up Cost</h1>
-          <h2>£ {fullTank}</h2>
-          <h2>{fullMiles} Miles</h2>
         </div>       
       </div>                  
     </div>

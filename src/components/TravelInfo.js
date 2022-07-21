@@ -6,7 +6,7 @@ function TravelInfo(props) {
   
 
   return (
-    <div className="travel__info">        
+    <div className="travel--info">        
       <div className="cards">
         <Card 
           title="Travel Information"

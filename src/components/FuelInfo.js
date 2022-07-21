@@ -4,9 +4,9 @@ function FuelInfo(props) {
 
   return (
     <div className="car">  
-      <div className="fuel__info">
+      <div className="fuel--info">
         <h1>Fuel Price</h1>
-        <div className="price__input">
+        <div className="price--input">
           <label htmlFor="price">Pence<br/>Per Litre:</label>
           <input 
             type="number" 
