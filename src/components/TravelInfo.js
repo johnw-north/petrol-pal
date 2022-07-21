@@ -7,15 +7,13 @@ function TravelInfo(props) {
 
   return (
     <div className="travel--info">        
-      <div className="cards">
-        <Card 
-          title="Travel Information"
-          titleTrips="Trips:" 
-          exTrips="1"
-          carData={props.carData}
-          handleChange={props.handleChange}
-        />
-      </div>
+      <Card 
+        title="Travel"
+        titleTrips="Trips:" 
+        exTrips="1"
+        carData={props.carData}
+        handleChange={props.handleChange}
+      />
     </div>
   );
 }

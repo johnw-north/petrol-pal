@@ -24,27 +24,20 @@ function App() {
     }
   )
 
+  const small = {mpg: 42, fuelCap: 1}
+  const medium = {mpg: 36, fuelCap: 50}
+  const large = {mpg: 30, fuelCap: 60}
+
+
   function handleChange(event) {
     const {name, value, type, checked, id} = event.target
     setCarData(prevCarData => {
       if (id === "small") {
-        return {
-          ...prevCarData,
-          mpg: 42,
-          fuelCap: 40,
-        }
+        return {...prevCarData, ...small}
       } else if (id === "medium") {
-          return {
-            ...prevCarData,
-            mpg: 36,
-            fuelCap: 50,
-          }
+          return {...prevCarData, ...medium}
       } else if (id === "large") {
-          return {
-            ...prevCarData,
-            mpg: 30,
-            fuelCap: 60,
-          } 
+          return {...prevCarData, ...large} 
       } else {
           return {
             ...prevCarData,
@@ -66,8 +59,6 @@ function App() {
   const lastYear = ((priceLast / 100) * carData.fuelCap).toFixed(2)
   const diff = (((((priceLast / 100) * carData.fuelCap) - ((carData.price / 100) * carData.fuelCap)) / ((priceLast / 100) * carData.fuelCap)) * 100).toFixed(0)
 
-  console.log(typeof diff)
-
   return (
     <div className="App">
       <header>
@@ -77,13 +68,14 @@ function App() {
       </header>
       <main>
         <div className="bubble">
+          <FuelInfo carData={carData} handleChange={handleChange} />
           {toggle ? 
           <ManualInfo handleToggle={handleToggle} carData={carData} handleChange={handleChange} /> 
           :
           <AutoInfo handleToggle={handleToggle} carData={carData} handleChange={handleChange} />
           }
-          <FuelInfo carData={carData} handleChange={handleChange} />
         </div>
+
         <div className="bubble">
           <div className="container--c">
             <h1>Full Tank</h1>
@@ -104,7 +96,8 @@ function App() {
             <h2>£ {lastYear}</h2>
             <h2>{fullMiles} Miles</h2>
           </div>
-        </div>       
+        </div>    
+
         <TravelInfo carData={carData} handleChange={handleChange} />
       </main>
     </div>

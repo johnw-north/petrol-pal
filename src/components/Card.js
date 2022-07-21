@@ -38,7 +38,7 @@ function Card(props) {
   
   const [tripData, setTripData] = useState(
     {
-      trips: 0,
+      trips: 1,
       oneWay: true,
     }
     )
@@ -67,79 +67,75 @@ function Card(props) {
     
   return (
     <div className="card"> 
-      <div className="bubble--c">
+      <div className="bubble">
         <h1>{props.title}</h1>
-        <form>
-          <div className="container">
-            <div className="container--c">
-              <Autocomplete>
-                <div>
-                  <label htmlFor="from">From:</label>
-                  <input
-                  type="text"
-                  id="from"
-                  name="from"
-                  placeholder="Manchester"
-                  style={{width: "150px"}}
-                  ref={originRef}
-                  />
-                </div>
-              </Autocomplete>
-              <Autocomplete>
-                <div>
-                  <label htmlFor="to">To:</label>
-                  <input
-                  type="text"
-                  id="to"
-                  name="to"
-                  placeholder="London"
-                  style={{width: "150px"}}
-                  ref={destiantionRef}
-                  />
-                </div>
-              </Autocomplete>
+        <div className="container--c">
+          <Autocomplete>
+            <div className="container--input">
+              <label htmlFor="from">From:</label>
+              <input
+              type="text"
+              id="from"
+              name="from"
+              placeholder="Manchester"
+              style={{width: "150px"}}
+              ref={originRef}
+              />
             </div>
-            <div className="container--c">
-              <div>
-                <label htmlFor="nTrips">{props.titleTrips}</label>
-                <input
-                type="number"
-                id="trips"
-                name="trips"
-                placeholder={props.exTrips}
-                value={tripData.trips || ""}
-                onChange={handleChange}
-                style={{width: "50px"}}
-                />
-              </div>
-              <div>
-                <input
-                type="checkbox"
-                id="oneWay"
-                name="oneWay"
-                checked={tripData.oneWay}
-                onChange={handleChange}
-                style={{width: "25px"}}
-                />
-                <label htmlFor="oneWay">One Way</label>
-              </div>
+          </Autocomplete>
+          <Autocomplete>
+            <div className="container--input">
+              <label htmlFor="to">To:</label>
+              <input
+              type="text"
+              id="to"
+              name="to"
+              placeholder="London"
+              style={{width: "150px"}}
+              ref={destiantionRef}
+              />
             </div>
+          </Autocomplete>
+        </div>
+        <div className="container--trip">
+          <div className="container--input">
+            <label htmlFor="nTrips">{props.titleTrips}</label>
+            <input
+            type="number"
+            id="trips"
+            name="trips"
+            placeholder={props.exTrips}
+            value={tripData.trips}
+            onChange={handleChange}
+            style={{width: "50px"}}
+            />
           </div>
-        </form>          
-        <div className="btns__set">
-          <button onClick={calculateMiles} >SET</button>
-          <button onClick={clearRoute} >CLEAR</button>
-        </div>   
-      </div>
+          <div className="container--check">
+            <input
+            type="checkbox"
+            id="oneWay"
+            name="oneWay"
+            checked={tripData.oneWay}
+            onChange={handleChange}
+            style={{width: "25px"}}
+            />
+            <label htmlFor="oneWay">One Way</label>
+          </div>
+        </div>
+        <div className="container--c">
+          <button onClick={calculateMiles} >Save</button>
+          <button onClick={clearRoute} >Clear</button>
+        </div>
+    </div>
       
 
-      <div className="container">
-        <div className="bubble--c">
-          <h1>Travel Cost</h1>
-          <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
-          <h2>{miles} Miles</h2>
-        </div>       
-      </div>                  
+    <div className="container">
+      <div className="bubble--c">
+        <h1>Travel Cost</h1>
+        <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
+        <h2>{miles} Miles</h2>
+      </div>       
+    </div>                  
     </div>
   );
 }

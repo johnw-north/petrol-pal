@@ -35,6 +35,10 @@ label {
   font-size: .8rem;
 }
 
+button {
+  margin: 5px;
+}
+
 .header--title h1 {
   font-family: 'Edu TAS Beginner', cursive;
   font-size: 3rem;
@@ -49,7 +53,7 @@ label {
 .bubble {
   background-color: white;
   border-radius: 20px;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -62,7 +66,7 @@ label {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-bottom: 15px;
 }
@@ -73,25 +77,39 @@ label {
   align-items: center;
 }
 
+
 .container--c {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
-.trip--settings {
+.container--trip {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.trip--settings div {
+.container--input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+}
+
+.container--radio {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  margin-bottom: 5px;  
+  align-items: flex-start;
+  padding: 5px;
+}
+
+.container--check {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
 }
