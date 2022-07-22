@@ -67,7 +67,7 @@ function Card(props) {
     
   return (
     <div className="card"> 
-      <div className="bubble">
+      <div className="card--bubble">
         <h1>{props.title}</h1>
         <div className="container--c">
           <Autocomplete>
@@ -122,20 +122,19 @@ function Card(props) {
             <label htmlFor="oneWay">One Way</label>
           </div>
         </div>
-        <div className="container--c">
-          <button onClick={calculateMiles} >Save</button>
-          <button onClick={clearRoute} >Clear</button>
-        </div>
-    </div>
-      
+      </div>
+      <div className="card--btns">
+        <button className="btn--save" onClick={calculateMiles} >Save</button>
+        <button className="btn--save" onClick={calculateMiles} >Delete</button>
+      </div>
 
-    <div className="container">
-      <div className="bubble--c">
-        <h1>Travel Cost</h1>
-        <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
-        <h2>{miles} Miles</h2>
-      </div>       
-    </div>                  
+      {/* <div className="container">
+        <div className="bubble--c">
+          <h1>Travel Cost</h1>
+          <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
+          <h2>{miles} Miles</h2>
+        </div>       
+      </div>                   */}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { faArrowTrendDown, faArrowTrendUp } from '@fortawesome/free-solid-svg-ic
 import AutoInfo from "./components/AutoInfo";
 import ManualInfo from './components/ManualInfo';
 import FuelInfo from './components/FuelInfo';
-import TravelInfo from "./components/TravelInfo"
+import Card from "./components/Card";
 
 function App() {
 
@@ -84,11 +84,11 @@ function App() {
           </div>
           <div className="container--c">
             <FontAwesomeIcon 
-              icon={diff < 0 ? faArrowTrendDown : faArrowTrendUp} 
-              style={diff < 0 ? {color: "red", fontSize: "1.5rem"} : {color: "green", fontSize: "1.5rem"}}
+              icon={diff > 0 ? faArrowTrendUp : faArrowTrendDown} 
+              style={diff > 0 ? {color: "green", fontSize: "1.5rem"} : {color: "red", fontSize: "1.5rem"}}
             />
             <h3 
-              style={diff < 0 ? {color: "red"} : {color: "green"}}>{isNaN(diff) ? 0 : diff}%
+              style={diff > 0 ? {color: "green"} : {color: "red"}}>{isNaN(diff) ? 0 : diff}%
             </h3>
           </div>
           <div className="container--c">
@@ -98,7 +98,13 @@ function App() {
           </div>
         </div>    
 
-        <TravelInfo carData={carData} handleChange={handleChange} />
+        <Card 
+        title="Travel"
+        titleTrips="Trips:" 
+        exTrips="1"
+        carData={carData}
+        handleChange={handleChange}
+        />
       </main>
     </div>
   );

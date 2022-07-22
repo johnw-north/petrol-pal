@@ -3,10 +3,10 @@
   box-sizing: border-box;
   font-weight: 400;
   line-height: 1.2;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   font-size: .6rem;
   background: #2d095c;
   margin-inline: auto;
@@ -36,7 +36,19 @@ label {
 }
 
 button {
-  margin: 5px;
+  padding: 7px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  font-size: .8rem;
+  font-weight: 600;
+  appearance: none;
+  border: none;
+  background-color: #5e15bc;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
 }
 
 .header--title h1 {
@@ -47,7 +59,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 20px 0;
 }
 
 .bubble {
@@ -57,7 +69,7 @@ button {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .bubble--c {
@@ -68,7 +80,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .container {
@@ -107,9 +119,84 @@ button {
   padding: 5px;
 }
 
+.container--radio * {
+  cursor: pointer;
+}
+
 .container--check {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 5px;
 }
+
+.container--check * {
+  cursor: pointer;
+}
+
+.card--bubble {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  flex: 1;
+  margin: 10px 0;
+  margin-right: 15px;
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 110px;
+}
+
+.card--btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:stretch;
+  min-width: 10%;
+  height: 100%;
+}
+
+.btn--save {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  appearance: none;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 15px;
+  color: #f7f7f7;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.btn--save:disabled {
+  pointer-events: none;
+}
+
+.btn--save:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.btn--save:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
