@@ -47,6 +47,7 @@ function Card(props) {
     {
       trips: 1,
       oneWay: true,
+      type: "Work",
     }
     )
     
@@ -74,9 +75,18 @@ function Card(props) {
   return (
     <div className="card"> 
       <div className="card--bubble">
-        <h1>{props.title}</h1>
         {edit ?
         <div className="edit--box">
+          <div className="container--input">
+            <label htmlFor="type">Type:</label>
+            <select name="type" id="type" value={tripData.type} onChange={handleChange}>
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
           <div className="container--c">
             <Autocomplete>
               <div className="container--input">
@@ -107,12 +117,12 @@ function Card(props) {
           </div>
           <div className="container--trip">
             <div className="container--input">
-              <label htmlFor="nTrips">{props.titleTrips}</label>
+              <label htmlFor="nTrips">Trips:</label>
               <input
               type="number"
               id="trips"
               name="trips"
-              placeholder={props.exTrips}
+              placeholder="1"
               value={tripData.trips}
               onChange={handleChange}
               style={{width: "50px"}}
@@ -133,9 +143,12 @@ function Card(props) {
         </div>
         :
         <div className="result--box">
-          <h1>Travel Cost</h1>
-          <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
-          <h2>{miles} Miles</h2>
+          <h1>{tripData.type}</h1>
+          <div className="container--c">
+            <h1>Travel Cost</h1>
+            <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
+            <h2>{miles} Miles</h2>
+          </div>
         </div> 
         }
       </div>

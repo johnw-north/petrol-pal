@@ -99,9 +99,6 @@ function App() {
         </div>    
 
         <Card 
-        title="Travel"
-        titleTrips="Trips:" 
-        exTrips="1"
         carData={carData}
         handleChange={handleChange}
         />
