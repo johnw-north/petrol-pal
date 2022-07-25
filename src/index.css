@@ -49,6 +49,7 @@ button {
   color: #FFFFFF;
   cursor: pointer;
   outline: none;
+  margin: 5px 0;
 }
 
 .header--title h1 {
@@ -174,7 +175,7 @@ button {
   background-color: #5cb85c;
   border: none;
   border-radius: 15px;
-  color: #f7f7f7;
+  color: #FFFFFF;
   cursor: pointer;
   outline: none;
   text-align: center;
@@ -192,7 +193,7 @@ button {
 
 .btn--save:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+  transform: translateY(2px);
 }
 
 .btn--save:active {
@@ -200,3 +201,17 @@ button {
   transform: translateY(0);
 }
 
+.edit--box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.result--box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

@@ -7,7 +7,8 @@ function FuelInfo(props) {
       <h1>Fuel Price</h1>
       <div className="container--input">
         <label htmlFor="price">Pence Per Litre:</label>
-        <input 
+        <input
+          style={{width: "100px"}} 
           type="number" 
           name="price"
           id="price" 

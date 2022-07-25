@@ -8,6 +8,7 @@ function ManualInfo(props) {
       <div className="container--input">
         <label htmlFor="mpg">MPG:</label>
         <input 
+          style={{width: "100px"}}
           type="number"
           id="mpg" 
           name="mpg" 
@@ -17,8 +18,9 @@ function ManualInfo(props) {
         />
       </div>
       <div className="container--input">
-        <label htmlFor="fuelCap">Fuel tank capacity:</label>
+        <label htmlFor="fuelCap">Fuel Capacity:</label>
         <input 
+          style={{width: "100px"}}
           type="number" 
           name="fuelCap"
           id="fuelCap" 

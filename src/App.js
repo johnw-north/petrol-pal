@@ -94,7 +94,7 @@ function App() {
           <div className="container--c">
             <h1>Last Year</h1>
             <h2>£ {lastYear}</h2>
-            <h2>{fullMiles} Miles</h2>
+            <h2>£1.45 Per Litre</h2>
           </div>
         </div>    
 

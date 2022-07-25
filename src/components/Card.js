@@ -12,28 +12,35 @@ function Card(props) {
   })
 
   const [distance, setDistance] = useState('0')
+  const [edit, setEdit] = useState(true)
 
   const originRef = useRef()
-  const destiantionRef = useRef()
+  const destinationRef = useRef()
 
-  
   async function calculateMiles() {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
-      destination: destiantionRef.current.value,
+      destination: destinationRef.current.value,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
       unitSystem: 1,
     })
     setDistance(parseFloat(results.routes[0].legs[0].distance.text))
   }
+
+  function saveTrip() {
+    if (originRef.current.value && destinationRef.current.value) {
+      calculateMiles()
+    }
+    setEdit(false)
+  }
   
   function clearRoute() {
     setDistance('')
     originRef.current.value = ''
-    destiantionRef.current.value = ''
+    destinationRef.current.value = ''
   }
   
   const [tripData, setTripData] = useState(
@@ -60,7 +67,6 @@ function Card(props) {
   const cost = ((pence / mpl) * (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
 
   
-
   if (!isLoaded) {
     return (<h1>not working</h1>)
   }
@@ -69,72 +75,82 @@ function Card(props) {
     <div className="card"> 
       <div className="card--bubble">
         <h1>{props.title}</h1>
-        <div className="container--c">
-          <Autocomplete>
+        {edit ?
+        <div className="edit--box">
+          <div className="container--c">
+            <Autocomplete>
+              <div className="container--input">
+                <label htmlFor="from">From:</label>
+                <input
+                type="text"
+                id="from"
+                name="from"
+                placeholder="Manchester"
+                style={{width: "150px"}}
+                ref={originRef}
+                />
+              </div>
+            </Autocomplete>
+            <Autocomplete>
+              <div className="container--input">
+                <label htmlFor="to">To:</label>
+                <input
+                type="text"
+                id="to"
+                name="to"
+                placeholder="London"
+                style={{width: "150px"}}
+                ref={destinationRef}
+                />
+              </div>
+            </Autocomplete>
+          </div>
+          <div className="container--trip">
             <div className="container--input">
-              <label htmlFor="from">From:</label>
+              <label htmlFor="nTrips">{props.titleTrips}</label>
               <input
-              type="text"
-              id="from"
-              name="from"
-              placeholder="Manchester"
-              style={{width: "150px"}}
-              ref={originRef}
+              type="number"
+              id="trips"
+              name="trips"
+              placeholder={props.exTrips}
+              value={tripData.trips}
+              onChange={handleChange}
+              style={{width: "50px"}}
               />
             </div>
-          </Autocomplete>
-          <Autocomplete>
-            <div className="container--input">
-              <label htmlFor="to">To:</label>
+            <div className="container--check">
               <input
-              type="text"
-              id="to"
-              name="to"
-              placeholder="London"
-              style={{width: "150px"}}
-              ref={destiantionRef}
+              type="checkbox"
+              id="oneWay"
+              name="oneWay"
+              checked={tripData.oneWay}
+              onChange={handleChange}
+              style={{width: "25px"}}
               />
+              <label htmlFor="oneWay">One Way</label>
             </div>
-          </Autocomplete>
-        </div>
-        <div className="container--trip">
-          <div className="container--input">
-            <label htmlFor="nTrips">{props.titleTrips}</label>
-            <input
-            type="number"
-            id="trips"
-            name="trips"
-            placeholder={props.exTrips}
-            value={tripData.trips}
-            onChange={handleChange}
-            style={{width: "50px"}}
-            />
-          </div>
-          <div className="container--check">
-            <input
-            type="checkbox"
-            id="oneWay"
-            name="oneWay"
-            checked={tripData.oneWay}
-            onChange={handleChange}
-            style={{width: "25px"}}
-            />
-            <label htmlFor="oneWay">One Way</label>
           </div>
         </div>
-      </div>
-      <div className="card--btns">
-        <button className="btn--save" onClick={calculateMiles} >Save</button>
-        <button className="btn--save" onClick={calculateMiles} >Delete</button>
-      </div>
-
-      {/* <div className="container">
-        <div className="bubble--c">
+        :
+        <div className="result--box">
           <h1>Travel Cost</h1>
           <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>
           <h2>{miles} Miles</h2>
-        </div>       
-      </div>                   */}
+        </div> 
+        }
+      </div>
+      {edit ? 
+      <div className="card--btns">
+        <button className="btn--save" onClick={saveTrip} >Save</button>
+        <button style={{backgroundColor: "#d9534f"}} className="btn--save" 
+        onClick={null} >Delete</button>
+      </div>
+      :
+      <div className="card--btns">
+        <button style={{backgroundColor: "#f0ad4e"}} className="btn--save" 
+        onClick={() => setEdit(true)} >Edit</button>
+      </div>
+      }        
     </div>
   );
 }
