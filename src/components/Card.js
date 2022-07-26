@@ -137,7 +137,7 @@ function Card(props) {
       <div className="card--btns">
         <button className="btn--save" onClick={saveTrip} >Save</button>
         <button style={{backgroundColor: "#d9534f"}} className="btn--save" 
-        onClick={null} >Delete</button>
+        onClick={(event) => props.deleteCard(event, props.cardId)} >Delete</button>
       </div>
       :
       <div className="card--btns">

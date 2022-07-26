@@ -71,7 +71,8 @@ function App() {
       key={card.id}
       cardId={card.id}
       carData={carData} 
-      handleChange={handleCardChange} 
+      handleChange={handleCardChange}
+      deleteCard={deleteCard} 
       cardData={card}
     />
   ))
@@ -89,14 +90,14 @@ function App() {
   
   function handleCardChange(event, cardId) {
     const {name, value, type, checked} = event.target
-    setCards(prevCards => prevCards.map(prevCard => {
-      return prevCard.id === cardId 
+    setCards(prevCards => prevCards.map(card => {
+      return card.id === cardId 
       ? 
         {
-        ...prevCard,
+        ...card,
         [name]: type === "checkbox" ? checked : value
         }
-      : prevCard     
+      : card     
     }))
   }
 
@@ -105,6 +106,10 @@ function App() {
       ...prevCards,
       {id: nanoid(), trips: 1, oneWay: true, type: "Work"} 
     ])
+  }
+
+  function deleteCard(event, cardId) {
+    setCards(prevCards => prevCards.filter(card => card.id !== cardId))
   }
 
   return (
