@@ -37,35 +37,11 @@ function Card(props) {
     setEdit(false)
   }
   
-  function clearRoute() {
-    setDistance('')
-    originRef.current.value = ''
-    destinationRef.current.value = ''
-  }
-  
-  const [tripData, setTripData] = useState(
-    {
-      trips: 1,
-      oneWay: true,
-      type: "Work",
-    }
-    )
-    
-  function handleChange(event) {
-    const {name, value, type, checked} = event.target
-    setTripData(prevTripData => {
-      return {
-        ...prevTripData,
-        [name]: type === "checkbox" ? checked : value
-      }
-    })
-  }
-  
   const mpl = props.carData.mpg / 4.54609
   const pence = props.carData.price / 100
 
-  const miles = ((distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
-  const cost = ((pence / mpl) * (distance * tripData.trips) * (tripData.oneWay ? 1 : 2)).toFixed(2)
+  const miles = ((distance * props.cardData.trips) * (props.cardData.oneWay ? 1 : 2)).toFixed(2)
+  const cost = ((pence / mpl) * (distance * props.cardData.trips) * (props.cardData.oneWay ? 1 : 2)).toFixed(2)
 
   
   if (!isLoaded) {
@@ -79,7 +55,12 @@ function Card(props) {
         <div className="edit--box">
           <div className="container--input">
             <label htmlFor="type">Type:</label>
-            <select name="type" id="type" value={tripData.type} onChange={handleChange}>
+            <select 
+              name="type"  
+              id="type" 
+              value={props.cardData.type} 
+              onChange={(event) => props.handleChange(event, props.cardId)}
+            >
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Shopping">Shopping</option>
@@ -123,8 +104,8 @@ function Card(props) {
               id="trips"
               name="trips"
               placeholder="1"
-              value={tripData.trips}
-              onChange={handleChange}
+              value={props.cardData.trips}
+              onChange={(event) => props.handleChange(event, props.cardId)}
               style={{width: "50px"}}
               />
             </div>
@@ -133,8 +114,8 @@ function Card(props) {
               type="checkbox"
               id="oneWay"
               name="oneWay"
-              checked={tripData.oneWay}
-              onChange={handleChange}
+              checked={props.cardData.oneWay}
+              onChange={(event) => props.handleChange(event, props.cardId)}
               style={{width: "25px"}}
               />
               <label htmlFor="oneWay">One Way</label>
@@ -143,7 +124,7 @@ function Card(props) {
         </div>
         :
         <div className="result--box">
-          <h1>{tripData.type}</h1>
+          <h1>{props.cardData.type}</h1>
           <div className="container--c">
             <h1>Travel Cost</h1>
             <h2>£ {isNaN(cost) ? "0.00" : cost}</h2>

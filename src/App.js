@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowTrendDown, faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTrendDown, faArrowTrendUp, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import AutoInfo from "./components/AutoInfo";
 import ManualInfo from './components/ManualInfo';
@@ -59,6 +60,53 @@ function App() {
   const lastYear = ((priceLast / 100) * carData.fuelCap).toFixed(2)
   const diff = (((((priceLast / 100) * carData.fuelCap) - ((carData.price / 100) * carData.fuelCap)) / ((priceLast / 100) * carData.fuelCap)) * 100).toFixed(0)
 
+  const baseCard = {id: nanoid(), trips: 1, oneWay: true, type: "Work"}
+
+  const [cards, setCards] = useState(() => [
+    {id: nanoid(), trips: 1, oneWay: true, type: "Work"}
+  ])
+
+  const cardElements = cards.map(card => (
+    <Card 
+      key={card.id}
+      cardId={card.id}
+      carData={carData} 
+      handleChange={handleCardChange} 
+      cardData={card}
+    />
+  ))
+
+  
+  // function handleCardChange(event) {
+  //   const {name, value, type, checked} = event.target
+  //   setCards(prevTripData => {
+  //     return {
+  //       ...prevTripData,
+  //       [name]: type === "checkbox" ? checked : value
+  //     }
+  //   })
+  // }
+  
+  function handleCardChange(event, cardId) {
+    const {name, value, type, checked} = event.target
+    setCards(prevCards => prevCards.map(prevCard => {
+      return prevCard.id === cardId 
+      ? 
+        {
+        ...prevCard,
+        [name]: type === "checkbox" ? checked : value
+        }
+      : prevCard     
+    }))
+  }
+
+  function newCard() {
+    setCards(prevCards => [
+      ...prevCards,
+      {id: nanoid(), trips: 1, oneWay: true, type: "Work"} 
+    ])
+  }
+
   return (
     <div className="App">
       <header>
@@ -96,12 +144,23 @@ function App() {
             <h2>£ {lastYear}</h2>
             <h2>£1.45 Per Litre</h2>
           </div>
-        </div>    
+        </div>
 
-        <Card 
-        carData={carData}
-        handleChange={handleChange}
-        />
+        <div className="cards">
+          {cardElements}
+        </div>
+
+        <div className="container" >
+          <button 
+            onClick={newCard}
+            style={{backgroundColor: "#5cb85c", width: "90px"}}
+          >
+            <FontAwesomeIcon 
+              icon={faPlus} 
+              style={{fontSize: "2rem"}}
+            />
+          </button>
+        </div>
       </main>
     </div>
   );
