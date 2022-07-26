@@ -60,8 +60,6 @@ function App() {
   const lastYear = ((priceLast / 100) * carData.fuelCap).toFixed(2)
   const diff = (((((priceLast / 100) * carData.fuelCap) - ((carData.price / 100) * carData.fuelCap)) / ((priceLast / 100) * carData.fuelCap)) * 100).toFixed(0)
 
-  const baseCard = {id: nanoid(), trips: 1, oneWay: true, type: "Work"}
-
   const [cards, setCards] = useState(() => [
     {id: nanoid(), trips: 1, oneWay: true, type: "Work"}
   ])
