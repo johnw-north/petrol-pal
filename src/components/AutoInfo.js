@@ -40,6 +40,17 @@ function AutoInfo(props) {
               />
             <label htmlFor="large">large</label>
           </div>
+          <div className="container--radio">
+            <input
+              type="radio"
+              id="van"
+              name="size"
+              value="van"
+              checked={props.carData.size === "van"}
+              onChange={props.handleChange}
+              />
+            <label htmlFor="van">van</label>
+          </div>
         </div>
       </form>
       <button onClick={props.handleToggle} >Back</button>

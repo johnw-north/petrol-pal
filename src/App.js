@@ -25,9 +25,10 @@ function App() {
     }
   )
 
-  const small = {mpg: 42, fuelCap: 1}
-  const medium = {mpg: 36, fuelCap: 50}
-  const large = {mpg: 30, fuelCap: 60}
+  const small = {mpg: 55, fuelCap: 35}
+  const medium = {mpg: 53, fuelCap: 44}
+  const large = {mpg: 40, fuelCap: 60}
+  const van = {mpg: 43, fuelCap: 90}
 
 
   function handleChange(event) {
@@ -39,6 +40,8 @@ function App() {
           return {...prevCarData, ...medium}
       } else if (id === "large") {
           return {...prevCarData, ...large} 
+      } else if (id === "van") {
+          return {...prevCarData, ...van} 
       } else {
           return {
             ...prevCarData,
@@ -53,7 +56,7 @@ function App() {
     })
   }
 
-  const priceLast = 145
+  const priceLast = 140
   
   const fullTank = ((carData.price / 100) * carData.fuelCap).toFixed(2)
   const fullMiles = ((carData.mpg / 4.54609).toFixed(2) * carData.fuelCap).toFixed(0)
@@ -145,7 +148,7 @@ function App() {
           <div className="container--c">
             <h1>Last Year</h1>
             <h2>£ {lastYear}</h2>
-            <h2>£1.45 Per Litre</h2>
+            <h2>£1.40 Per Litre</h2>
           </div>
         </div>
 
