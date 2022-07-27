@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/petrol-pal/static/css/main.beffec53.css",
-    "main.js": "/petrol-pal/static/js/main.454fa5e5.js",
+    "main.js": "/petrol-pal/static/js/main.f449ff21.js",
     "index.html": "/petrol-pal/index.html",
     "main.beffec53.css.map": "/petrol-pal/static/css/main.beffec53.css.map",
-    "main.454fa5e5.js.map": "/petrol-pal/static/js/main.454fa5e5.js.map"
+    "main.f449ff21.js.map": "/petrol-pal/static/js/main.f449ff21.js.map"
   },
   "entrypoints": [
     "static/css/main.beffec53.css",
-    "static/js/main.454fa5e5.js"
+    "static/js/main.f449ff21.js"
   ]
 }
